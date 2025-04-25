@@ -3,7 +3,10 @@ package com.example.studentApp.controllers;
 import com.example.studentApp.dtos.RegisterDTO;
 import com.example.studentApp.dtos.RegisterResponseDTO;
 import com.example.studentApp.service.StudentService;
-import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.*;
+import io.swagger.v3.oas.annotations.*;
+//import io.swagger.v3.oas.annotations.Operation;
+//import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +20,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+@Tag(name = "Auth")
 @RestController
 @RequestMapping("/api/v1/students")
 public class StudentController {
@@ -26,7 +30,7 @@ public class StudentController {
         this.studentService = studentService;
     }
 
-    @Operation(summary = "auth")
+    @Operation(summary = "This is for student registration")
     @PostMapping
     ResponseEntity<?> register(@Valid @RequestBody RegisterDTO registerDTO, BindingResult result){
         RegisterResponseDTO registerStudent = studentService.registerStudent(registerDTO);
