@@ -1,5 +1,8 @@
 package com.example.studentApp.dtos;
 
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import lombok.*;
 
 @Data
@@ -8,9 +11,15 @@ import lombok.*;
 @Getter
 @Setter
 public class RegisterDTO {
+    @NotBlank(message = "Firstname cannot be empty")
     private String firstName;
+    @NotBlank(message = "Lastname cannot be empty")
     private String lastName;
+    @Email(message = "Invalid Email")
+    @NotBlank(message = "Email cannot be empty")
     private String email;
+    @NotBlank(message = "Password cannot be empty")
+    @Size(min = 5, message = "Password must be at least 5 characters")
     private String password;
 
     public RegisterDTO(){
